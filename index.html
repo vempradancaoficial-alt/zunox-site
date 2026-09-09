@@ -9,11 +9,13 @@
   <script>document.documentElement.classList.add('js');</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Remix Icons para o WhatsApp e outros -->
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Preloader ZunoX Original -->
   <div id="preloader" aria-hidden="true">
     <div class="preloader-content">
       <span class="brand-name">ZUNO<span>X</span></span>
@@ -33,54 +35,102 @@
         <a href="#solucoes">Soluções</a>
         <a href="#transformacao">Impacto</a>
         <a href="#metodo">Método</a>
-        <a href="#contato" class="nav-cta">Iniciar projeto</a>
+        <a href="#contato" class="btn-pill-outline nav-cta">Iniciar projeto</a>
       </nav>
     </div>
   </header>
 
   <main id="conteudo">
-    <!-- 1. HERO -->
+    <!-- 1. HERO (Dark Premium) -->
     <section id="inicio" class="hero">
-      <div class="hero-bg-parallax" data-parallax="0.25"></div>
+      <div class="hero-bg-parallax"></div>
       <div class="container hero-grid">
         <div class="hero-content">
-          <p class="eyebrow hero-reveal-line delay-1"><span></span> PRESENÇA DIGITAL PREMIUM</p>
+          <p class="eyebrow hero-reveal-line"><span></span> PRESENÇA DIGITAL PREMIUM</p>
           <h1 class="hero-title">
-            <div class="reveal-mask"><span class="hero-reveal-line delay-2">Presença digital.</span></div>
-            <div class="reveal-mask"><span class="hero-reveal-line delay-3">Soluções <em>únicas.</em></span></div>
+            <div class="reveal-mask"><span class="hero-reveal-line delay-1">Criamos soluções</span></div>
+            <div class="reveal-mask"><span class="hero-reveal-line delay-2">digitais para</span></div>
+            <div class="reveal-mask"><span class="hero-reveal-line delay-3">sua <em>empresa.</em></span></div>
           </h1>
           <p class="hero-desc hero-reveal-line delay-4">Sistemas, automações e experiências corporativas para empresas que precisam ir além do convencional.</p>
+          
           <div class="hero-actions hero-reveal-line delay-5">
-            <a class="btn-primary" href="https://wa.me/5516997288487" target="_blank" rel="noopener noreferrer">
-              <span>Iniciar meu projeto</span> <i class="ri-arrow-right-up-line"></i>
+            <a class="btn-pill-primary" href="https://wa.me/5516997288487" target="_blank" rel="noopener noreferrer">
+              <span>Iniciar meu projeto</span> <i class="ri-whatsapp-line"></i>
             </a>
           </div>
         </div>
+        
+        <!-- Logo 3D Giratória Automática -->
         <div class="hero-visual hero-reveal-line delay-6">
-          <div class="zx-container" data-tilt>
+          <div class="zx-container">
             <div class="zx-glow"></div>
-            <img class="zx-svg" src="ZunoX-Zx-Spline.svg" alt="ZunoX Logo" draggable="false">
+            <img class="zx-svg auto-spin" src="ZunoX-Zx-Spline.svg" alt="ZunoX Logo" draggable="false">
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 2. SOLUÇÕES -->
+    <!-- 2. SHOWROOM: MOCKUP CELULAR (Estilo Aira + Dark) -->
+    <section id="transformacao" class="showroom section-pad">
+      <div class="container showroom-grid">
+        <div class="showroom-content scroll-reveal">
+          <p class="eyebrow"><span></span> 01 / NOSSO IMPACTO</p>
+          <h2>O seu próximo grande case de sucesso.</h2>
+          <p>O foco não é a tecnologia pela tecnologia. Cada projeto da ZunoX começa entendendo o seu negócio para transformar gargalos em processos eficientes de alta escala.</p>
+          
+          <div class="showroom-tags">
+            <span class="badge">Next.js</span>
+            <span class="badge">Tailwind CSS</span>
+            <span class="badge">Sistemas Web</span>
+          </div>
+
+          <a class="btn-pill-outline mt-4" href="https://wa.me/5516997288487" target="_blank">
+            <span>Ver demonstração</span> <i class="ri-arrow-right-line"></i>
+          </a>
+        </div>
+
+        <div class="showroom-visual scroll-reveal" style="--delay: 0.2s;">
+          <div class="phone-mockup">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <!-- Tela interna do sistema simulado -->
+              <div class="mockup-ui">
+                <div class="mockup-header">VPD Agenda Inteligente</div>
+                <div class="mockup-card">
+                  <div class="mockup-title">Turma: Forró Iniciante</div>
+                  <div class="mockup-info">Alunos: 15/20 | 19:00</div>
+                </div>
+                <div class="mockup-card">
+                  <div class="mockup-title">Turma: Ballet Clássico</div>
+                  <div class="mockup-info">Alunos: 12/15 | 20:30</div>
+                </div>
+                <div class="mockup-card active">
+                  <div class="mockup-title">Turma: Ritmos</div>
+                  <div class="mockup-info">Alunos: 20/20 (Lotação)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. SOLUÇÕES (Layout Editorial Luxuoso) -->
     <section id="solucoes" class="solutions section-pad">
       <div class="container">
-        <div class="section-header scroll-reveal">
-          <p class="eyebrow"><span></span> 01 / NOSSAS SOLUÇÕES</p>
+        <div class="section-header scroll-reveal text-center">
+          <p class="eyebrow mx-auto"><span></span> 02 / NOSSAS SOLUÇÕES</p>
           <h2>Tecnologia com propósito.<br>Sem pacotes genéricos.</h2>
         </div>
         <div class="solutions-grid">
           <div class="solution-card scroll-reveal">
             <div class="card-icon"><i class="ri-global-line"></i></div>
             <h3>Presença Digital</h3>
-            <p>Experiências focadas em autoridade e conversão.</p>
+            <p>Experiências focadas em autoridade e conversão real.</p>
             <ul>
               <li>Landing Pages</li>
               <li>Sites Institucionais</li>
-              <li>E-commerce</li>
               <li>Presença no Google</li>
             </ul>
           </div>
@@ -92,7 +142,6 @@
               <li>Sistemas Internos</li>
               <li>Dashboards Customizados</li>
               <li>Painéis Administrativos</li>
-              <li>Áreas Exclusivas</li>
             </ul>
           </div>
           <div class="solution-card scroll-reveal" style="--delay: 0.3s;">
@@ -102,7 +151,6 @@
             <ul>
               <li>Automação de Processos</li>
               <li>Integrações Complexas</li>
-              <li>Desenvolvimento de APIs</li>
               <li>Fluxos Inteligentes</li>
             </ul>
           </div>
@@ -110,62 +158,13 @@
       </div>
     </section>
 
-    <!-- 3. TRANSFORMAÇÃO -->
-    <section id="transformacao" class="transform section-pad">
-      <div class="container transform-grid">
-        <div class="transform-visual scroll-reveal">
-          <div class="transform-glow" data-parallax="0.12"></div>
-          <img class="transform-svg" src="ZunoX-Zx-Spline.svg" alt="" aria-hidden="true" draggable="false">
-        </div>
-        <div class="transform-content scroll-reveal">
-          <p class="eyebrow"><span></span> 02 / IMPACTO REAL</p>
-          <h2>Não entregamos apenas código.<br>Construímos o seu próximo movimento.</h2>
-          <p>O foco não é a tecnologia pela tecnologia. Cada projeto da ZunoX começa entendendo o seu negócio para transformar contatos em clientes e gargalos em processos eficientes.</p>
-          <br>
-          <a class="btn-link" href="https://wa.me/5516997288487" target="_blank">Entenda nosso impacto <i class="ri-arrow-right-line"></i></a>
-        </div>
-      </div>
-    </section>
-
-    <!-- 4. MÉTODO -->
-    <section id="metodo" class="method section-pad">
-      <div class="container">
-        <div class="section-header scroll-reveal text-center">
-          <p class="eyebrow mx-auto"><span></span> 03 / COMO TRABALHAMOS</p>
-          <h2>Um processo claro.</h2>
-        </div>
-        <div class="method-steps">
-          <div class="step scroll-reveal">
-            <span class="step-num">01</span>
-            <h3>Descobrimos</h3>
-            <p>Mapeamos seu cenário e necessidades reais.</p>
-          </div>
-          <div class="step scroll-reveal" style="--delay: 0.1s;">
-            <span class="step-num">02</span>
-            <h3>Criamos</h3>
-            <p>Desenhamos a solução sem depender de templates.</p>
-          </div>
-          <div class="step scroll-reveal" style="--delay: 0.2s;">
-            <span class="step-num">03</span>
-            <h3>Conectamos</h3>
-            <p>Integramos a tecnologia à sua operação.</p>
-          </div>
-          <div class="step scroll-reveal" style="--delay: 0.3s;">
-            <span class="step-num">04</span>
-            <h3>Evoluímos</h3>
-            <p>Lançamos e acompanhamos o crescimento.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5. CTA FINAL -->
+    <!-- 4. CTA FINAL (Pílula Gigante) -->
     <section id="contato" class="final-cta section-pad">
       <div class="container">
         <div class="cta-box scroll-reveal">
           <h2>Seu próximo passo digital começa aqui.</h2>
-          <a class="btn-primary btn-large" href="https://wa.me/5516997288487" target="_blank" rel="noopener noreferrer">
-            <span>Iniciar meu projeto agora</span> <i class="ri-arrow-right-up-line"></i>
+          <a class="btn-pill-primary btn-large" href="https://wa.me/5516997288487" target="_blank" rel="noopener noreferrer">
+            <span>Falar com um especialista</span> <i class="ri-whatsapp-line"></i>
           </a>
         </div>
       </div>
@@ -182,7 +181,7 @@
       </div>
       <div class="footer-contact">
         <a href="mailto:contato.zunox@gmail.com">contato.zunox@gmail.com</a>
-        <a href="https://wa.me/5516997288487" target="_blank">WhatsApp <i class="ri-external-link-line"></i></a>
+        <a href="https://wa.me/5516997288487" target="_blank"><i class="ri-whatsapp-line"></i> WhatsApp</a>
       </div>
     </div>
     <div class="container footer-bottom">

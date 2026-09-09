@@ -12,9 +12,9 @@
     }
   };
   window.addEventListener('load', () => setTimeout(hidePreloader, prefersReducedMotion ? 0 : 500));
-  setTimeout(hidePreloader, 3000); // Fallback
+  setTimeout(hidePreloader, 3000); 
 
-  // Header Scroll State
+  // Header State
   const header = document.querySelector('.site-header');
   window.addEventListener('scroll', () => {
     if (header) {
@@ -57,59 +57,15 @@
     document.querySelectorAll('.scroll-reveal').forEach(el => el.classList.add('is-visible'));
   }
 
-  // Tilt Effect on SVG
-  if (!prefersReducedMotion && window.matchMedia('(pointer: fine)').matches) {
-    const tiltEl = document.querySelector('[data-tilt]');
-    const heroVisual = document.querySelector('.hero-visual');
-    const glow = document.querySelector('.zx-glow');
-    
-    if (tiltEl && heroVisual) {
-      heroVisual.addEventListener('mousemove', (e) => {
-        const rect = heroVisual.getBoundingClientRect();
-        // Calculate mouse position relative to center of element (-0.5 to 0.5)
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        
-        // Tilt - subtle rotation
-        tiltEl.style.transform = `perspective(1000px) rotateY(${x * 12}deg) rotateX(${-y * 12}deg)`;
-        
-        // Dynamic Lighting - follows mouse slightly
-        if (glow) {
-          glow.style.transform = `translate(calc(-50% + ${x * 60}px), calc(-50% + ${y * 60}px))`;
-          glow.style.opacity = '0.35';
-        }
-      });
-      
-      heroVisual.addEventListener('mouseleave', () => {
-        tiltEl.style.transform = `perspective(1000px) rotateY(0deg) rotateX(0deg)`;
-        if (glow) {
-          glow.style.transform = `translate(-50%, -50%)`;
-          glow.style.opacity = '0.18';
-        }
-      });
+  // Parallax Background
+  if (!prefersReducedMotion) {
+    const heroBg = document.querySelector('.hero-bg-parallax');
+    if (heroBg) {
+      window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY;
+        heroBg.style.transform = `translateY(${scrolled * 0.25}px)`;
+      }, { passive: true });
     }
   }
-
-  // Parallax Elements
-  if (!prefersReducedMotion) {
-    const parallaxElements = document.querySelectorAll('[data-parallax]');
-    let lastScrollY = window.scrollY;
-    let ticking = false;
-
-    const updateParallax = () => {
-      parallaxElements.forEach(el => {
-        const speed = el.getAttribute('data-parallax') || 0.2;
-        el.style.transform = `translateY(${lastScrollY * speed}px)`;
-      });
-      ticking = false;
-    };
-
-    window.addEventListener('scroll', () => {
-      lastScrollY = window.scrollY;
-      if (!ticking) {
-        window.requestAnimationFrame(updateParallax);
-        ticking = true;
-      }
-    }, { passive: true });
-  }
+  
 })();
