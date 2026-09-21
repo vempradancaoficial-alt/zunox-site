@@ -1,5 +1,15 @@
 export default async function handler(req: any, res: any) {
-  // Apenas aceita pedidos POST (envio de dados da aplicação)
+  // Libera o CORS para qualquer origem (permite chamadas do localhost e do app)
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  // Responde imediatamente a requisições de teste do navegador (OPTIONS)
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+
+  // Apenas aceita pedidos POST (envio de dados)
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Método não permitido' });
   }
@@ -12,7 +22,7 @@ export default async function handler(req: any, res: any) {
     const response = await fetch('https://api.mercadopago.com/checkout/preferences', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${process.env.MP_ACCESS_TOKEN}`, // A chave que trancámos na Vercel!
+        'Authorization': `Bearer ${process.env.MP_ACCESS_TOKEN}`, // A chave guardada na Vercel
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
@@ -25,9 +35,9 @@ export default async function handler(req: any, res: any) {
           }
         ],
         payer: {
-          email: email || 'cliente@zunox.com.br' // Email padrão caso não seja enviado
+          email: email || 'cliente@zunox.com.br'
         },
-        external_reference: tenantId, // A "etiqueta" para sabermos qual barbeiro pagou
+        external_reference: tenantId,
         back_urls: {
           success: 'https://zunox.com.br/painel',
           failure: 'https://zunox.com.br/assinatura',
