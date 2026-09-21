@@ -1,28 +1,27 @@
 export default async function handler(req: any, res: any) {
-  // Libera o CORS para qualquer origem (permite chamadas do localhost e do app)
+  // 1. CABEÇALHOS ANTI-CORS (A Mágica para não dar erro no localhost)
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, POST');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 
-  // Responde imediatamente a requisições de teste do navegador (OPTIONS)
+  // 2. RESPOSTA RÁPIDA PARA O NAVEGADOR (Preflight)
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
 
-  // Apenas aceita pedidos POST (envio de dados)
+  // 3. SEGURANÇA: Só aceita POST
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Método não permitido' });
   }
 
-  // Recebe os dados enviados pela aplicação ZunoX
   const { titulo, preco, email, tenantId } = req.body;
 
   try {
-    // Comunicação invisível e segura com o servidor do Mercado Pago
+    // 4. COMUNICAÇÃO COM O MERCADO PAGO
     const response = await fetch('https://api.mercadopago.com/checkout/preferences', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${process.env.MP_ACCESS_TOKEN}`, // A chave guardada na Vercel
+        'Authorization': `Bearer ${process.env.MP_ACCESS_TOKEN}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
@@ -39,9 +38,9 @@ export default async function handler(req: any, res: any) {
         },
         external_reference: tenantId,
         back_urls: {
-          success: 'https://zunox.com.br/painel',
-          failure: 'https://zunox.com.br/assinatura',
-          pending: 'https://zunox.com.br/assinatura'
+          success: 'https://www.zunox.com.br/painel',
+          failure: 'https://www.zunox.com.br/assinatura',
+          pending: 'https://www.zunox.com.br/assinatura'
         },
         auto_return: 'approved'
       })
@@ -49,7 +48,7 @@ export default async function handler(req: any, res: any) {
 
     const data = await response.json();
 
-    // Devolve para a aplicação o link seguro do ecrã de pagamento do Mercado Pago
+    // 5. DEVOLVE O LINK DE PAGAMENTO
     return res.status(200).json({ link_pagamento: data.init_point });
 
   } catch (error) {
