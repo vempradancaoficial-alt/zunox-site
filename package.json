@@ -1,0 +1,23 @@
+{
+  "name": "zunox-site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vempradancaoficial-alt/zunox-site.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vempradancaoficial-alt/zunox-site/issues"
+  },
+  "homepage": "https://github.com/vempradancaoficial-alt/zunox-site#readme",
+  "dependencies": {
+    "firebase-admin": "^14.4.0"
+  }
+}
